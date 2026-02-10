@@ -179,6 +179,7 @@
         .map-container {
             text-align: center;
             margin-top: 20px;
+            position: relative;
         }
         .map-img {
             width: 100%;
@@ -187,21 +188,49 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            cursor: zoom-in;
         }
         .map-img:hover {
             transform: scale(1.02);
-            cursor: pointer;
+        }
+        
+        /* LIGHTBOX MAPY */
+        .map-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 999;
+            cursor: zoom-out;
+        }
+        .map-overlay.active { display: block; }
+        .map-img.active {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 95%;
+            max-width: 1200px;
+            height: auto;
+            max-height: 95vh;
+            object-fit: contain;
+            z-index: 1000;
+            cursor: zoom-out;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
         @media (max-width: 768px) {
-            .step-list { flex-direction: column; }
+            .step-list { flex-direction: column; align-items: center; }
             .arrow { transform: rotate(90deg); margin: 10px 0; }
             .grid { grid-template-columns: 1fr; }
             .scenario-header { flex-direction: column; text-align: center; gap: 10px; }
+            .step { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- OVERLAY DLA MAPY -->
+    <div class="map-overlay" id="mapOverlay" onclick="toggleMap()"></div>
 
     <header>
         <h1>Orelle & Val Thorens 2026</h1>
@@ -351,8 +380,11 @@
                 <!-- ORELLE / SNOWSHOW INTEL -->
                 <div class="card intel-card">
                     <div class="card-header">
-                        <h3>🇵🇱 Orelle: Polska Strefa (Intel) <span class="event-tag" style="background: #d63031;">W NASZYM HOTELU</span></h3>
-                        <span class="icon">🤫</span>
+                        <div style="width: 100%;">
+                            <h3>🇵🇱 Orelle: Polska Strefa (Intel)</h3>
+                            <span class="event-tag" style="background: #d63031; display: inline-block; margin-top: 5px;">W NASZYM HOTELU</span>
+                        </div>
+                        <span class="icon" style="align-self: flex-start; margin-top: 5px;">🤫</span>
                     </div>
                     <p style="font-size: 0.9rem; margin-bottom: 15px;">
                         W Waszej rezydencji (Hameau des Eaux) stacjonuje ekipa "SnowShow" (~300 osób - głównie polscy studenci i młodzi dorośli). Wykorzystajcie to!
@@ -463,8 +495,9 @@
                         <span class="icon">📍</span>
                     </div>
                     <div class="map-container">
-                        <img src="STOK.jpg" alt="Mapa Orelle Stok i Hotel" class="map-img">
+                        <img src="STOK.jpg" alt="Mapa Orelle Stok i Hotel" class="map-img" id="mapImage" onclick="toggleMap()">
                         <p style="margin-top: 10px; color: #666; font-size: 0.9rem;">
+                            <small>Kliknij mapę, aby powiększyć</small><br>
                             Legenda: <span style="color:red; font-weight:bold;">Wyciąg</span>, 
                             <span style="color:green; font-weight:bold;">Hotel</span>, 
                             <span style="color:blue; font-weight:bold;">Skibus</span>
@@ -477,5 +510,13 @@
 
     </div>
 
+    <script>
+        function toggleMap() {
+            const img = document.getElementById('mapImage');
+            const overlay = document.getElementById('mapOverlay');
+            img.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
