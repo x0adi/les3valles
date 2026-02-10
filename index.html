@@ -81,22 +81,22 @@
             align-items: flex-start;
             margin-top: 20px;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px; /* Mniejszy odstęp żeby zmieścić więcej kroków */
         }
         .step {
             flex: 1;
-            min-width: 150px;
+            min-width: 130px; /* Węższe kafelki */
             background: #fdfdfd;
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
             border: 1px solid #eee;
             text-align: center;
             position: relative;
         }
-        .step-icon { font-size: 2rem; display: block; margin-bottom: 5px; }
-        .step-time { font-weight: bold; color: var(--danger); display: block; margin-top: 5px; font-size: 1.1rem; }
-        .arrow { font-size: 1.5rem; color: #ccc; align-self: center; }
-        .step-note { font-size: 0.8rem; color: #666; display: block; margin-top: 5px; }
+        .step-icon { font-size: 1.8rem; display: block; margin-bottom: 5px; }
+        .step-time { font-weight: bold; color: var(--danger); display: block; margin-top: 5px; font-size: 1rem; }
+        .arrow { font-size: 1.2rem; color: #ccc; align-self: center; }
+        .step-note { font-size: 0.75rem; color: #666; display: block; margin-top: 5px; line-height: 1.2; }
 
         /* GRID */
         .grid {
@@ -220,7 +220,7 @@
 
         @media (max-width: 768px) {
             .step-list { flex-direction: column; align-items: center; }
-            .arrow { transform: rotate(90deg); margin: 10px 0; }
+            .arrow { transform: rotate(90deg); margin: 5px 0; }
             .grid { grid-template-columns: 1fr; }
             .scenario-header { flex-direction: column; text-align: center; gap: 10px; }
             .step { width: 100%; max-width: 300px; }
@@ -268,28 +268,54 @@
                         <span class="step-note">Wyjście z imprezy</span>
                         <span class="step-time">Max 16:00</span>
                     </div>
+                    
                     <div class="arrow">➔</div>
+                    
                     <div class="step">
-                        <span class="step-icon">⛷️ + 🚠</span>
-                        <strong>Transfer</strong>
-                        <span class="step-note">Zjazd + Cime Caron + Zjazd</span>
-                        <span class="step-time">~40 min (Narty/Wyciąg)</span>
+                        <span class="step-icon">⛷️</span>
+                        <strong>Zjazd</strong>
+                        <span class="step-note">Do wyciągu (np. Plein Sud)</span>
+                        <span class="step-time">~10 min</span>
                     </div>
+                    
                     <div class="arrow">➔</div>
+                    
+                    <div class="step">
+                        <span class="step-icon">🚠</span>
+                        <strong>Wjazd na grań</strong>
+                        <span class="step-note">Cime Caron / Rosael</span>
+                        <span class="step-time">~10-15 min</span>
+                    </div>
+                    
+                    <div class="arrow">➔</div>
+                    
+                    <div class="step">
+                        <span class="step-icon">⛷️</span>
+                        <strong>Zjazd do stacji</strong>
+                        <span class="step-note">Do Plan Bouchet</span>
+                        <span class="step-time">~15 min</span>
+                    </div>
+
+                    <div class="arrow">➔</div>
+
                     <div class="step">
                         <span class="step-icon">🛑</span>
                         <strong>Plan Bouchet</strong>
-                        <span class="step-note">Tu WSIADACIE do gondoli</span>
+                        <span class="step-note">Przesiadka na gondolę</span>
                         <span class="step-time">16:50 (Deadline!)</span>
                     </div>
+                    
                     <div class="arrow">➔</div>
+                    
                     <div class="step" style="border: 2px solid var(--danger);">
                         <span class="step-icon">🚠</span>
                         <strong>Jazda w dół</strong>
                         <span class="step-note">Do Orelle (900m)</span>
-                        <span class="step-time">~20 min (Wagonik)</span>
+                        <span class="step-time">~20 min</span>
                     </div>
+                    
                     <div class="arrow">➔</div>
+                    
                     <div class="step" style="background: #e8f5e9; border: 1px solid #c8e6c9;">
                         <span class="step-icon">🏨</span>
                         <strong>Hotel</strong>
@@ -382,7 +408,10 @@
                     <div class="card-header">
                         <div style="width: 100%;">
                             <h3>🇵🇱 Orelle: Polska Strefa (Intel)</h3>
-                            <span class="event-tag" style="background: #d63031; display: inline-block; margin-top: 5px;">W NASZYM HOTELU</span>
+                            <div style="margin-top: 5px;">
+                                <span class="event-tag" style="background: #d63031; display: inline-block;">W NASZYM HOTELU</span>
+                                <span style="font-size: 0.9rem; font-weight: bold; margin-left: 10px; color: #555;">📅 07.03 - 14.03</span>
+                            </div>
                         </div>
                         <span class="icon" style="align-self: flex-start; margin-top: 5px;">🤫</span>
                     </div>
